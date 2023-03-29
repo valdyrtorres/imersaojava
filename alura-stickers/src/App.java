@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -37,6 +38,9 @@ public class App {
         //System.out.println(listaDeFilmes.size());
         //System.out.println(listaDeFilmes.get(0));
 
+        var diretorio = new File("figurinhas/");
+        diretorio.mkdir();
+
         // exibir e manipular os dados
         var geradora = new GeradoraDeFigurinhas();
         for (Map<String, String> filme : listaDeFilmes) {
@@ -45,7 +49,7 @@ public class App {
             String titulo = filme.get("title");
 
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + ".png";
+            String nomeArquivo = "figurinhas/" + titulo + ".png";
 
             geradora.criar(inputStream, nomeArquivo);
 
