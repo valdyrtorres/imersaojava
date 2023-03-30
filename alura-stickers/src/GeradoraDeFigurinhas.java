@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
 
-    public void criar(InputStream inputStream, String nomeArquivo) throws Exception {
+    public void criar(InputStream inputStream, String nomeArquivo, String texto, InputStream inputStreamSobreposicao) throws Exception {
 
         // leitura da imagem
         //InputStream inputStream = new FileInputStream(new File("entrada/filme.jpg"));
@@ -35,6 +35,11 @@ public class GeradoraDeFigurinhas {
         Graphics2D graphics = (Graphics2D) novaImagem.getGraphics();
         graphics.drawImage(imagemOriginal, 0, 0, null);
 
+        // Desafio 05
+        BufferedImage imagemSobreposicao = ImageIO.read(inputStreamSobreposicao);
+        int posicaoImagemSobreposicaoY = novaAltura - imagemSobreposicao.getHeight();
+        graphics.drawImage(imagemSobreposicao, 0, posicaoImagemSobreposicaoY, null);
+
         // configurar a fonte
         //var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 64);
         var fonte = new Font("Impact", Font.BOLD, 80);
@@ -42,7 +47,6 @@ public class GeradoraDeFigurinhas {
         graphics.setFont(fonte);
 
         // escrever uma frase na nova imagem
-        String texto = "TOPZERA";
         FontMetrics fontMetrics = graphics.getFontMetrics();
         Rectangle2D retangulo = fontMetrics.getStringBounds(texto, graphics);
         int larguraTexto = (int)retangulo.getWidth();

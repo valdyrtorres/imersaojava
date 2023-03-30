@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -15,9 +16,9 @@ public class App {
         //String url = "https://imdb-api.com/en/API/Top250Movies/k_0ojt0yvm";
 
         // TopMovies
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         // Most Popular Movies
-        //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
 
         // endpoint que retorna as melhores séries
         //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json";
@@ -51,11 +52,23 @@ public class App {
             InputStream inputStream = new URL(urlImagem).openStream();
             String nomeArquivo = "figurinhas/" + titulo + ".png";
 
-            geradora.criar(inputStream, nomeArquivo);
-
             System.out.println("Título: " + titulo);
             System.out.println("Poster: " + urlImagem);
             String nota = filme.get("imDbRating");
+            double classificacao = Double.parseDouble(nota);
+
+            String textoFigurinha;
+            InputStream imagemValdyr;
+            if (classificacao >= 8.0) {
+                textoFigurinha = "TOPZERA";
+                imagemValdyr = new FileInputStream(new File("sobreposicao/valdyr-empolgado-menor.jpg"));
+            } else {
+                textoFigurinha = "HMMMMMM...";
+                imagemValdyr = new FileInputStream(new File("sobreposicao/valdyr-desconfiado-menor.jpg"));
+            }
+
+            geradora.criar(inputStream, nomeArquivo, textoFigurinha, imagemValdyr);
+
             System.out.println("\u001b[37;1m\u001b[44;1mClassificação: " + nota + "\u001b[m");
             //System.out.println("\uD83D\uDC99 💙️");
             int rating = 1;
