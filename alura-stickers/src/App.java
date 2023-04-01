@@ -16,7 +16,8 @@ public class App {
         //String url = "https://imdb-api.com/en/API/Top250Movies/k_0ojt0yvm";
 
         // TopMovies
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        // String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        String url = "https://raw.githubusercontent.com-URL-ERRADA/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
 
         // Most Popular Movies
