@@ -8,17 +8,16 @@ import java.util.Map;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // Externalizado as URL's
         // Nasa api
-        String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-06-12&end_date=2022-06-14";
-        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
-
-        // fazer uma conexão http e buscar os top 250 filmes
-        //String url = "https://imdb-api.com/en/API/Top250Movies/k_0ojt0yvm";
-
+        // API api = API.NASA;
         // TopMovies
-        // String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        // String url = "https://raw.githubusercontent.com-URL-ERRADA/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        // ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
+        // API api = API.IMDB_TOP_MOVIES;
+        // TopSeries
+        API api = API.IMDB_TOP_SERIES;
+
+        String url = api.getUrl();
+        ExtratorDeConteudo extrator = api.getExtrator();
 
         // Most Popular Movies
         //String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/MostPopularMovies.json";
