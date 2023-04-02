@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Linguagem {
 
     @Id
-    private String Id;
+    private String id;
     private String title;
     private String image;
     private int ranking;
@@ -23,7 +23,7 @@ public class Linguagem {
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
     
     public String getTitle() {
@@ -34,6 +34,10 @@ public class Linguagem {
     }
     public int getRanking() {
         return ranking;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
