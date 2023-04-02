@@ -19,7 +19,9 @@ public class App {
         // String url = api.getUrl();
         // ExtratorDeConteudo extrator = api.getExtrator();
 
-        String url = "http://localhost:8080/linguagens";
+        // String url = "http://localhost:8080/linguagens";
+        String url = "https://alura-linguagens-valdir.fly.dev/linguagens";
+        
         ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
 
         // Most Popular Movies
